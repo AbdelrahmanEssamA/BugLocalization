@@ -69,12 +69,12 @@ def main():
     print("Bug history started")
     # Unpickle preprocessed data
 
-    with open(swt.root + '/preprocessed_reports.pickle', 'rb') as file:
+    with open(zxing.root + '/preprocessed_reports.pickle', 'rb') as file:
         bug_reports = pickle.load(file)
         runBugHistory(bug_reports)
     scores = runBugHistory(bug_reports)
     # Saving similarities in a json file
-    with open(swt.root + '/bug_history.json', 'w') as file:
+    with open(zxing.root + '/bug_history.json', 'w') as file:
         json.dump(scores, file)
     print('Bug history finished')
     

@@ -118,18 +118,18 @@ def evaluate(src_files, bug_reports, coeffs, *rank_scores):
             np.mean(f_measure_at_n, axis=1).tolist())
 
 def main():
-    with open(swt.root+'/preprocessed_src.pickle', 'rb') as file:
+    with open(zxing.root+'/preprocessed_src.pickle', 'rb') as file:
         src_files = pickle.load(file)
-    with open(swt.root+'/preprocessed_reports.pickle', 'rb') as file:
+    with open(zxing.root+'/preprocessed_reports.pickle', 'rb') as file:
         bug_reports = pickle.load(file)
 
-    with open(swt.root+'/vsm_similarity.json', 'r') as file:
+    with open(zxing.root+'/vsm_similarity.json', 'r') as file:
         vsm_similarity_score = json.load(file)
-    with open(swt.root+'/semantic_similarity.json', 'r') as file:
+    with open(zxing.root+'/semantic_similarity.json', 'r') as file:
         semantic_similarity_score = json.load(file)
-    with open(swt.root + '/token_matching.json', 'r') as file:
+    with open(zxing.root + '/token_matching.json', 'r') as file:
         token_matching_score = json.load(file)
-    with open(swt.root + '/bug_history.json', 'r') as file:
+    with open(zxing.root + '/bug_history.json', 'r') as file:
         bug_history_score = json.load(file)
 
     print('evaluation started')
@@ -150,7 +150,7 @@ def main():
     print('F-measure@N:', results[6])
 
     #  Create result files
-    filename = 'Results/' + swt.name + '.txt'
+    filename = 'Results/' + zxing.name + '.txt'
     if os.path.exists(filename):
         append_write = 'a'  # append if already exists
     else:
@@ -163,6 +163,7 @@ def main():
     resultsFile.write('\nTop 10 Rank %:' + str(results[1][2]))
     resultsFile.write('\nMRR:' + str(results[2]))
     resultsFile.write('\nMAP:' + str(results[3]))
+    resultsFile.write('\n-----------------------------')
     resultsFile.close()
 
 

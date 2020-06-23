@@ -48,16 +48,16 @@ def check_matchings(src_files, bug_reports):
 def main():
     print("Token matching started")
     # Unpickle preprocessed data
-    with open(swt.root + '/preprocessed_src.pickle', 'rb') as file:
+    with open(zxing.root + '/preprocessed_src.pickle', 'rb') as file:
         src_files = pickle.load(file)
 
-    with open(swt.root + '/preprocessed_reports.pickle', 'rb') as file:
+    with open(zxing.root + '/preprocessed_reports.pickle', 'rb') as file:
         bug_reports = pickle.load(file)
 
     scores = check_matchings(src_files,bug_reports)
 
     # Saving similarities in a json file
-    with open(swt.root + '/token_matching.json', 'w') as file:
+    with open(zxing.root + '/token_matching.json', 'w') as file:
         json.dump(scores, file)
     print('Token matching  finished')
 

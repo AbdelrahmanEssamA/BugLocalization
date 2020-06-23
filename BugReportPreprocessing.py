@@ -145,14 +145,14 @@ class ReportPreprocessing:
 
 def main():
     # Parsing the data of the dataset to make it ready for preprocess
-    parser = Parser(swt)
+    parser = Parser(zxing)
 
     # Preprocess the data
     preprocessedReports = ReportPreprocessing(parser.bugReportParser())
     preprocessedReports.preprocess()
 
     # Creating a pickle file to hold the preprocessed data
-    with open(swt.root + '/preprocessed_reports.pickle', 'wb') as file:
+    with open(zxing.root + '/preprocessed_reports.pickle', 'wb') as file:
         pickle.dump(preprocessedReports.bugReports, file, protocol=pickle.HIGHEST_PROTOCOL)
 
     print("Bug report preprocessed successfully")
