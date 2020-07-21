@@ -3,7 +3,7 @@ import re
 import nltk
 import inflection
 import pickle
-from nltk.stem.snowball import SnowballStemmer
+from nltk.stem import  PorterStemmer
 from nltk.stem import WordNetLemmatizer
 from Datasets import  zxing, aspectj, swt
 from Datasets import Parser
@@ -110,11 +110,11 @@ class SrcPreprocessing:
 
         # Java language keywords
         javaKeywords = {'abstract', 'assert', 'boolean', 'break', 'byte', 'case', 'catch', 'char', 'class', 'const',
-                        'continue', 'default', 'do', 'double', 'else', 'enum', 'extends', 'false', 'final', 'finally',
+                        'continue', 'default', 'do', 'double', 'else', 'enum', 'extends', 'final', 'finally',
                         'float', 'for', 'goto', 'if', 'implements', 'import', 'instanceof', 'int', 'interface', 'long',
                         'native', 'new', 'null', 'package', 'private', 'protected', 'public', 'return', 'short',
                         'static', 'strictfp', 'super', 'switch', 'synchronized', 'this', 'throw', 'throws',
-                        'transient', 'true', 'try', 'void', 'volatile', 'while'}
+                        'transient', 'try', 'void', 'volatile', 'while'}
 
         for src in self.srcFiles.values():
             src.fullCode = [token for token in src.fullCode if token not in javaKeywords]
@@ -129,7 +129,7 @@ class SrcPreprocessing:
     # Stemming tokens
     def stem(self):
         # Stemmer instance (snow ball)
-        stemmer = SnowballStemmer("english")
+        stemmer = PorterStemmer()
 
         for src in self.srcFiles.values():
 
@@ -142,6 +142,10 @@ class SrcPreprocessing:
             src.fileName = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.fileName], src.fileName]))
             src.pos_tagged_comments = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.pos_tagged_comments], src.pos_tagged_comments]))
 
+    # Lemmatizing the tokens
+    # def Lemmatize(self):
+    # lemmatizer = WordNetLemmatizer()
+    # Running preprocessing functions for bug reports
 
     # Running preprocessing functions for src code files
     def preprocess(self):
@@ -166,9 +170,9 @@ class SrcPreprocessing:
 
 def main():
     # Parsing the data of the dataset to make it ready for preprocess
+    print('preprocessing started')
     parser = Parser(zxing)
     # Preprocess the data
-    print("Src Code preprocessing started")
     preprocessedSrcFiles = SrcPreprocessing(parser.srcCodeParser())
     preprocessedSrcFiles.preprocess()
 

@@ -115,13 +115,13 @@ class ReportPreprocessing:
     def stem(self):
 
         # Stemmer instance (snow ball)
-        sbs = SnowballStemmer("english")
-        lemz = WordNetLemmatizer();
+        sbs = WordNetLemmatizer()
+
         for report in self.bugReports.values():
-            report.summary = dict(zip(['stemmed', 'unstemmed'], [[sbs.stem(token) for token in report.summary], report.summary]))
-            report.description = dict(zip(['stemmed', 'unstemmed'], [[sbs.stem(token) for token in report.description], report.description]))
-            report.pos_tagged_summary = dict(zip(['stemmed', 'unstemmed'], [[sbs.stem(token) for token in report.pos_tagged_summary], report.pos_tagged_summary]))
-            report.pos_tagged_description = dict(zip(['stemmed', 'unstemmed'], [[sbs.stem(token) for token in report.pos_tagged_description], report.pos_tagged_description]))
+            report.summary = dict(zip(['stemmed', 'unstemmed'], [[sbs.lemmatize(token) for token in report.summary], report.summary]))
+            report.description = dict(zip(['stemmed', 'unstemmed'], [[sbs.lemmatize(token) for token in report.description], report.description]))
+            report.pos_tagged_summary = dict(zip(['stemmed', 'unstemmed'], [[sbs.lemmatize(token) for token in report.pos_tagged_summary], report.pos_tagged_summary]))
+            report.pos_tagged_description = dict(zip(['stemmed', 'unstemmed'], [[sbs.lemmatize(token) for token in report.pos_tagged_description], report.pos_tagged_description]))
 
     # Lemmatizing the tokens
     # def Lemmatize(self):
@@ -145,14 +145,14 @@ class ReportPreprocessing:
 
 def main():
     # Parsing the data of the dataset to make it ready for preprocess
-    parser = Parser(zxing)
+    parser = Parser(aspectj)
 
     # Preprocess the data
     preprocessedReports = ReportPreprocessing(parser.bugReportParser())
     preprocessedReports.preprocess()
 
     # Creating a pickle file to hold the preprocessed data
-    with open(zxing.root + '/preprocessed_reports.pickle', 'wb') as file:
+    with open(aspectj.root + '/preprocessed_reports.pickle', 'wb') as file:
         pickle.dump(preprocessedReports.bugReports, file, protocol=pickle.HIGHEST_PROTOCOL)
 
     print("Bug report preprocessed successfully")

@@ -1,9 +1,10 @@
 import pickle
 import json
 from sklearn import preprocessing
-
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
-from Datasets import  zxing, aspectj, swt
+from  Datasets import  zxing, aspectj, swt
 
 
 def check_matchings(src_files, bug_reports):
