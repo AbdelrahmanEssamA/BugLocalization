@@ -118,12 +118,9 @@ def main():
         vsm_similarity_score = json.load(file)
     with open(aspectj.root+'/semantic_similarity.json', 'r') as file:
         semantic_similarity_score = json.load(file)
-    with open(aspectj.root + '/token_matching.json', 'r') as file:
-        token_matching_score = json.load(file)
 
-    print('evaluation started')
-    params = estiamte_params(src_files, bug_reports, vsm_similarity_score, token_matching_score, semantic_similarity_score)
-    results = evaluate(src_files, bug_reports, params, vsm_similarity_score, token_matching_score, semantic_similarity_score)
+    params = estiamte_params(src_files, bug_reports, vsm_similarity_score, semantic_similarity_score)
+    results = evaluate(src_files, bug_reports, params, vsm_similarity_score, semantic_similarity_score)
 
     print('Top N Rank:', results[0])
     print('Top 1 Rank %:', results[1][0])
@@ -139,7 +136,7 @@ def main():
     print('F-measure@N:', results[6])
 
     #  Create result files
-    filename = 'Results/' + swt.name + '.txt'
+    filename = 'Results/' + aspectj.name + '.txt'
     if os.path.exists(filename):
         append_write = 'a'  # append if already exists
     else:

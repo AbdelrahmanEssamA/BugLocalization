@@ -3,7 +3,7 @@ import re
 import nltk
 import inflection
 import pickle
-from nltk.stem import PorterStemmer
+from nltk.stem.snowball import SnowballStemmer
 from nltk.stem import WordNetLemmatizer
 from Datasets import Parser, zxing, aspectj, swt
 
@@ -115,14 +115,13 @@ class ReportPreprocessing:
     def stem(self):
 
         # Stemmer instance (snow ball)
-        sbs = PorterStemmer()
-        lemmatizer = WordNetLemmatizer()
+        sbs = SnowballStemmer("english")
 
         for report in self.bugReports.values():
-            report.summary = dict(zip(['stemmed', 'lemmatize', 'unstemmed'], [[sbs.stem(token) for token in report.summary], [lemmatizer.lemmatize(token) for token in report.summary], report.summary]))
-            report.description = dict(zip(['stemmed', 'lemmatize', 'unstemmed'], [[sbs.stem(token) for token in report.description], [lemmatizer.lemmatize(token) for token in report.description], report.description]))
-            report.pos_tagged_summary = dict(zip(['stemmed', 'lemmatize', 'unstemmed'], [[sbs.stem(token) for token in report.pos_tagged_summary], [lemmatizer.lemmatize(token) for token in report.pos_tagged_summary], report.pos_tagged_summary]))
-            report.pos_tagged_description = dict(zip(['stemmed', 'lemmatize', 'unstemmed'], [[sbs.stem(token) for token in report.pos_tagged_description], [lemmatizer.lemmatize(token) for token in report.pos_tagged_description], report.pos_tagged_description]))
+            report.summary = dict(zip(['stemmed', 'unstemmed'], [[sbs.stem(token) for token in report.summary], report.summary]))
+            report.description = dict(zip(['stemmed', 'unstemmed'], [[sbs.stem(token) for token in report.description], report.description]))
+            report.pos_tagged_summary = dict(zip(['stemmed', 'unstemmed'], [[sbs.stem(token) for token in report.pos_tagged_summary], report.pos_tagged_summary]))
+            report.pos_tagged_description = dict(zip(['stemmed', 'unstemmed'], [[sbs.stem(token) for token in report.pos_tagged_description], report.pos_tagged_description]))
 
     # Lemmatizing the tokens
     # def Lemmatize(self):
@@ -146,14 +145,14 @@ class ReportPreprocessing:
 
 def main():
     # Parsing the data of the dataset to make it ready for preprocess
-    parser = Parser(swt)
+    parser = Parser(zxing)
 
     # Preprocess the data
     preprocessedReports = ReportPreprocessing(parser.bugReportParser())
     preprocessedReports.preprocess()
 
     # Creating a pickle file to hold the preprocessed data
-    with open(swt.root + '/preprocessed_reports.pickle', 'wb') as file:
+    with open(zxing.root + '/preprocessed_reports.pickle', 'wb') as file:
         pickle.dump(preprocessedReports.bugReports, file, protocol=pickle.HIGHEST_PROTOCOL)
 
     print("Bug report preprocessed successfully")

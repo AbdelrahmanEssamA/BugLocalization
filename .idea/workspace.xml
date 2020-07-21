@@ -23,17 +23,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../rvsm +glove + tokenMatchin ver1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
     <property name="settings.editor.splitter.proportion" value="0.0" />
   </component>
-  <component name="RunManager" selected="Python.WordEmbedding">
+  <component name="RunManager" selected="Python.Evaluation">
     <configuration name="BugReportPreprocessing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BugLocalization" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -48,6 +48,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BugReportPreprocessing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Datasets" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BugLocalization" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Datasets.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -92,28 +114,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SourceCodePreprocessing.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TokenMatch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="BugLocalization" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TokenMatch.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -168,11 +168,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Evaluation" />
         <item itemvalue="Python.WordEmbedding" />
         <item itemvalue="Python.SourceCodePreprocessing" />
-        <item itemvalue="Python.Evaluation" />
-        <item itemvalue="Python.TokenMatch" />
         <item itemvalue="Python.BugReportPreprocessing" />
+        <item itemvalue="Python.Datasets" />
       </list>
     </recent_temporary>
   </component>
@@ -224,17 +224,6 @@
       <workItem from="1590921036748" duration="2335000" />
       <workItem from="1590926609285" duration="1163000" />
       <workItem from="1591093723751" duration="139000" />
-      <workItem from="1591229172718" duration="1929000" />
-      <workItem from="1591233937315" duration="69000" />
-      <workItem from="1591239363514" duration="214000" />
-      <workItem from="1591239595822" duration="1737000" />
-      <workItem from="1591265485718" duration="335000" />
-      <workItem from="1591266235677" duration="31000" />
-      <workItem from="1591272382191" duration="7513000" />
-      <workItem from="1591281788427" duration="1260000" />
-      <workItem from="1591283119091" duration="176000" />
-      <workItem from="1591283496335" duration="251000" />
-      <workItem from="1591284273976" duration="116000" />
     </task>
     <servers />
   </component>
@@ -242,11 +231,11 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1028" y="77" key="FileChooserDialogImpl" timestamp="1591284391995">
+    <state x="314" y="289" key="FileChooserDialogImpl" timestamp="1590925513055">
       <screen x="63" y="0" width="1857" height="1080" />
     </state>
     <state x="260" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587435892202" />
-    <state x="1028" y="77" key="FileChooserDialogImpl/63.0.1857.1080@63.0.1857.1080" timestamp="1591284391995" />
+    <state x="314" y="289" key="FileChooserDialogImpl/63.0.1857.1080@63.0.1857.1080" timestamp="1590925513055" />
     <state width="1877" height="266" key="GridCell.Tab.0.bottom" timestamp="1587591836055">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -263,16 +252,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="266" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587591836055" />
-    <state x="530" y="31" key="SettingsEditor" timestamp="1591273225889">
+    <state x="530" y="31" key="SettingsEditor" timestamp="1587935889091">
       <screen x="63" y="0" width="1857" height="1080" />
     </state>
     <state x="860" y="158" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1587439469517" />
-    <state x="530" y="31" key="SettingsEditor/63.0.1857.1080@63.0.1857.1080" timestamp="1591273225889" />
-    <state x="63" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1591284343639">
+    <state x="530" y="31" key="SettingsEditor/63.0.1857.1080@63.0.1857.1080" timestamp="1587935889091" />
+    <state x="63" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1590921219606">
       <screen x="63" y="0" width="1857" height="1080" />
     </state>
     <state x="655" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587590029300" />
-    <state x="63" y="0" key="com.intellij.ide.util.TipDialog/63.0.1857.1080@63.0.1857.1080" timestamp="1591284343639" />
+    <state x="63" y="0" key="com.intellij.ide.util.TipDialog/63.0.1857.1080@63.0.1857.1080" timestamp="1590921219606" />
     <state x="661" y="139" width="661" height="801" key="find.popup" timestamp="1587929978721">
       <screen x="63" y="0" width="1857" height="1080" />
     </state>
