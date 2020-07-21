@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/rVSM.iml" filepath="$PROJECT_DIR$/.idea/rVSM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/wordEmbeding(glove).iml" filepath="$PROJECT_DIR$/.idea/wordEmbeding(glove).iml" />
     </modules>
   </component>
 </project>
