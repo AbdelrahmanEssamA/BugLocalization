@@ -3,8 +3,6 @@ import os
 import json
 import operator
 import numpy as np
-from sphinx.addnodes import toctree
-
 from Datasets import zxing,aspectj,swt
 from scipy import optimize
 
@@ -57,14 +55,10 @@ def estiamte_params(src_files, bug_reports, *rank_scores):
 def evaluate(src_files, bug_reports, coeffs, *rank_scores):
     final_scores = combine_rank_scores(coeffs, *rank_scores)
 
-    # Writer for the output file
-    result_file = open('output.csv', 'w')
-
     top_n = (1, 5, 10)
     top_n_rank = [0] * len(top_n)
     mrr = []
     mean_avgp = []
-
 
     precision_at_n = [[] for _ in top_n]
     recall_at_n = [[] for _ in top_n]
@@ -108,9 +102,6 @@ def evaluate(src_files, bug_reports, coeffs, *rank_scores):
 
         # MAP
         mean_avgp.append(np.mean([len(relevant_ranks[:j + 1]) / rank for j, rank in enumerate(relevant_ranks)]))
-        result_file.write(bug_id + ',' + ','.join(src_ranks) + '\n')
-
-    result_file.close()
 
     return (top_n_rank, [x / len(bug_reports) for x in top_n_rank],
             np.mean(mrr), np.mean(mean_avgp),
@@ -118,23 +109,21 @@ def evaluate(src_files, bug_reports, coeffs, *rank_scores):
             np.mean(f_measure_at_n, axis=1).tolist())
 
 def main():
-    with open(zxing.root+'/preprocessed_src.pickle', 'rb') as file:
+    with open(aspectj.root+'/preprocessed_src.pickle', 'rb') as file:
         src_files = pickle.load(file)
-    with open(zxing.root+'/preprocessed_reports.pickle', 'rb') as file:
+    with open(aspectj.root+'/preprocessed_reports.pickle', 'rb') as file:
         bug_reports = pickle.load(file)
 
-    with open(zxing.root+'/vsm_similarity.json', 'r') as file:
+    with open(aspectj.root+'/vsm_similarity.json', 'r') as file:
         vsm_similarity_score = json.load(file)
-    with open(zxing.root+'/semantic_similarity.json', 'r') as file:
+    with open(aspectj.root+'/semantic_similarity.json', 'r') as file:
         semantic_similarity_score = json.load(file)
-    with open(zxing.root + '/token_matching.json', 'r') as file:
+    with open(aspectj.root + '/token_matching.json', 'r') as file:
         token_matching_score = json.load(file)
-    with open(zxing.root + '/bug_history.json', 'r') as file:
-        bug_history_score = json.load(file)
 
     print('evaluation started')
-    params = estiamte_params(src_files, bug_reports, token_matching_score,semantic_similarity_score,vsm_similarity_score)
-    results = evaluate(src_files, bug_reports,params, token_matching_score,semantic_similarity_score,vsm_similarity_score)
+    params = estiamte_params(src_files, bug_reports, vsm_similarity_score, token_matching_score, semantic_similarity_score)
+    results = evaluate(src_files, bug_reports, params, vsm_similarity_score, token_matching_score, semantic_similarity_score)
 
     print('Top N Rank:', results[0])
     print('Top 1 Rank %:', results[1][0])
@@ -150,7 +139,7 @@ def main():
     print('F-measure@N:', results[6])
 
     #  Create result files
-    filename = 'Results/' + zxing.name + '.txt'
+    filename = 'Results/' + swt.name + '.txt'
     if os.path.exists(filename):
         append_write = 'a'  # append if already exists
     else:
@@ -163,7 +152,6 @@ def main():
     resultsFile.write('\nTop 10 Rank %:' + str(results[1][2]))
     resultsFile.write('\nMRR:' + str(results[2]))
     resultsFile.write('\nMAP:' + str(results[3]))
-    resultsFile.write('\n-----------------------------')
     resultsFile.close()
 
 

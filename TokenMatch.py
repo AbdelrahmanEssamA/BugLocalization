@@ -1,9 +1,10 @@
 import pickle
 import json
 from sklearn import preprocessing
-
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
-from Datasets import  zxing, aspectj, swt
+from  Datasets import  zxing, aspectj, swt
 
 
 def check_matchings(src_files, bug_reports):
@@ -13,11 +14,11 @@ def check_matchings(src_files, bug_reports):
     for report in bug_reports.values():
         matched_count = []
         summary_set = report.summary
-        pos_tagged_sum_desc = (report.pos_tagged_summary['stemmed'] + report.pos_tagged_description['stemmed'])
+        pos_tagged_sum_desc = (report.pos_tagged_summary['lemmatize'] + report.pos_tagged_description['lemmatize'])
 
         for src in src_files.values():
-            if src.fileName['stemmed']:
-                common_tokens = len(set(summary_set['stemmed']) & set([src.fileName['stemmed'][0]]))
+            if src.fileName['lemmatize']:
+                common_tokens = len(set(summary_set['lemmatize']) & set([src.fileName['lemmatize'][0]]))
 
             matched_count.append(common_tokens)
 
@@ -25,13 +26,13 @@ def check_matchings(src_files, bug_reports):
         if sum(matched_count) == 0:
             matched_count = []
             for src in src_files.values():
-                common_tokens = len(set(pos_tagged_sum_desc) & set(src.fileName['stemmed'] + src.classNames['stemmed'] + src.methodNames['stemmed']))
+                common_tokens = len(set(pos_tagged_sum_desc) & set(src.fileName['unu'] + src.classNames['lemmatize'] + src.methodNames['lemmatize']))
 
                 if not common_tokens:
-                    common_tokens = (len(set(pos_tagged_sum_desc) & set(src.comments['stemmed'])) - len(set(src.comments['stemmed'])))
+                    common_tokens = (len(set(pos_tagged_sum_desc) & set(src.comments['lemmatize'])) - len(set(src.comments['lemmatize'])))
 
                 if not common_tokens:
-                    common_tokens = (len(set(pos_tagged_sum_desc) & set(src.attributes['stemmed'])) - len(set(src.attributes['stemmed'])))
+                    common_tokens = (len(set(pos_tagged_sum_desc) & set(src.attributes['lemmatize'])) - len(set(src.attributes['lemmatize'])))
 
                 matched_count.append(common_tokens)
 
