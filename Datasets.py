@@ -29,14 +29,14 @@ zxing = DataSet('zxing', 'ZXing/ZXing-1.6', 'ZXing/ZXingBugRepository.xml', 'ZXi
 class BugReport:
     """Class representing each bug report"""
 
-    def __init__(self, summary, description, fixedFiles, fixedTime):
+    def __init__(self, summary, description, fixedFiles):
         self.summary = summary
         self.description = description
         self.fixedFiles = fixedFiles
-        self.fixedTime = fixedTime
         self.pos_tagged_summary = None
         self.pos_tagged_description = None
-
+        self.lemmatizedSummary = None
+        self.lemmatizedDescription = None
 
 
 class SourceCode:  # edited
@@ -76,12 +76,12 @@ class Parser:
             bug_reports[bug_report['@id']] = BugReport(bug_report['buginformation']['summary'],
                 bug_report['buginformation']['description']
                 if bug_report['buginformation']['description'] else '',
-                [os.path.normpath(path) for path in bug_report['fixedFiles']['file']], bug_report['@fixdate'] if bug_report['@fixdate'] else '',
+                [os.path.normpath(path) for path in bug_report['fixedFiles']['file']]
             )
 
         return bug_reports
 
-    # Parse  (Source Code)
+    # Parse the xml files (Source Code)
     def srcCodeParser(self):
 
         # Getting all the files with java extension recursively

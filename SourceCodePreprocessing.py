@@ -3,7 +3,7 @@ import re
 import nltk
 import inflection
 import pickle
-from nltk.stem.snowball import SnowballStemmer
+from nltk.stem import PorterStemmer
 from nltk.stem import WordNetLemmatizer
 from Datasets import  zxing, aspectj, swt
 from Datasets import Parser
@@ -129,19 +129,18 @@ class SrcPreprocessing:
     # Stemming tokens
     def stem(self):
         # Stemmer instance (snow ball)
-        stemmer = SnowballStemmer("english")
+        stemmer = PorterStemmer()
+        lemmatizer = WordNetLemmatizer()
 
         for src in self.srcFiles.values():
-
-            src.fullCode = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.fullCode], src.fullCode]))
-            src.comments = dict(zip(['stemmed', 'unstemmed'],[[stemmer.stem(token) for token in src.comments], src.comments]))
-            src.classNames = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.classNames], src.classNames]))
-            src.attributes = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.attributes], src.attributes]))
-            src.methodNames = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.methodNames], src.methodNames]))
-            src.variables = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.variables], src.variables]))
-            src.fileName = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.fileName], src.fileName]))
-            src.pos_tagged_comments = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.pos_tagged_comments], src.pos_tagged_comments]))
-
+            src.fullCode = dict(zip(['stemmed', 'lemmatize', 'unstemmed'], [[stemmer.stem(token) for token in src.fullCode], [lemmatizer.lemmatize(token) for token in src.fullCode], src.fullCode]))
+            src.comments = dict(zip(['stemmed', 'lemmatize', 'unstemmed'], [[stemmer.stem(token) for token in src.comments], [lemmatizer.lemmatize(token) for token in src.comments]]))
+            src.classNames = dict(zip(['stemmed', 'lemmatize', 'unstemmed'], [[stemmer.stem(token) for token in src.classNames], [lemmatizer.lemmatize(token) for token in src.classNames], src.comments]))
+            src.attributes = dict(zip(['stemmed', 'lemmatize', 'unstemmed'], [[stemmer.stem(token) for token in src.attributes], [lemmatizer.lemmatize(token) for token in src.attributes], src.attributes]))
+            src.methodNames = dict(zip(['stemmed', 'lemmatize', 'unstemmed'], [[stemmer.stem(token) for token in src.methodNames], [lemmatizer.lemmatize(token) for token in src.methodNames], src.methodNames]))
+            src.variables = dict(zip(['stemmed', 'lemmatize', 'unstemmed'], [[stemmer.stem(token) for token in src.variables], [lemmatizer.lemmatize(token) for token in src.variables], src.variables]))
+            src.fileName = dict(zip(['stemmed', 'lemmatize', 'unstemmed'], [[stemmer.stem(token) for token in src.fileName], [lemmatizer.lemmatize(token) for token in src.fileName], src.fileName]))
+            src.pos_tagged_comments = dict(zip(['stemmed', 'lemmatize', 'unstemmed'], [[stemmer.stem(token) for token in src.pos_tagged_comments], [lemmatizer.lemmatize(token) for token in src.pos_tagged_comments], src.pos_tagged_comments]))
 
     # Running preprocessing functions for src code files
     def preprocess(self):
@@ -166,9 +165,9 @@ class SrcPreprocessing:
 
 def main():
     # Parsing the data of the dataset to make it ready for preprocess
+    print('preprocessing started')
     parser = Parser(zxing)
     # Preprocess the data
-    print("Src Code preprocessing started")
     preprocessedSrcFiles = SrcPreprocessing(parser.srcCodeParser())
     preprocessedSrcFiles.preprocess()
 
