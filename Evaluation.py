@@ -113,11 +113,11 @@ def main():
     with open(zxing.root + '/preprocessed_reports.pickle', 'rb') as file:
         bug_reports = pickle.load(file)
 
-    with open(zxing.root + '/token_matching.json', 'r') as file:
-        token_matching_score = json.load(file)
+    with open(swt.root+'/vsm_similarity.json', 'r') as file:
+        vsm_similarity_score = json.load(file)
 
-    params = estiamte_params(src_files, bug_reports, token_matching_score)
-    results = evaluate(src_files, bug_reports, params, token_matching_score)
+    params = estiamte_params(src_files, bug_reports, vsm_similarity_score)
+    results = evaluate(src_files, bug_reports, params, vsm_similarity_score)
 
     print('Top N Rank:', results[0])
     print('Top 1 Rank %:', results[1][0])
