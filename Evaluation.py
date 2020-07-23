@@ -3,7 +3,7 @@ import json
 import os
 import operator
 import numpy as np
-from Datasets import zxing,aspectj,swt
+from Datasets import aspectj, swt,zxing
 from scipy import optimize
 
 
@@ -15,14 +15,13 @@ def combine_rank_scores(coeffs, *rank_scores):
 
     return final_score
 
-def cost(coeffs, src_files, bug_reports, *rank_scores):
 
+def cost(coeffs, src_files, bug_reports, *rank_scores):
     final_scores = combine_rank_scores(coeffs, *rank_scores)
     mrr = []
     mean_avgp = []
 
     for i, report in enumerate(bug_reports.items()):
-
         src_ranks, _ = zip(*sorted(zip(src_files.keys(), final_scores[i]),
                                    key=operator.itemgetter(1), reverse=True))
 
@@ -42,7 +41,6 @@ def cost(coeffs, src_files, bug_reports, *rank_scores):
 
 
 def estiamte_params(src_files, bug_reports, *rank_scores):
-
     res = optimize.differential_evolution(
         cost, bounds=[(0, 1)] * len(rank_scores),
         args=(src_files, bug_reports, *rank_scores),
@@ -108,17 +106,18 @@ def evaluate(src_files, bug_reports, coeffs, *rank_scores):
             np.mean(precision_at_n, axis=1).tolist(), np.mean(recall_at_n, axis=1).tolist(),
             np.mean(f_measure_at_n, axis=1).tolist())
 
+
 def main():
-    with open(aspectj.root+'/preprocessed_src.pickle', 'rb') as file:
+    with open(zxing.root + '/preprocessed_src.pickle', 'rb') as file:
         src_files = pickle.load(file)
-    with open(aspectj.root+'/preprocessed_reports.pickle', 'rb') as file:
+    with open(zxing.root + '/preprocessed_reports.pickle', 'rb') as file:
         bug_reports = pickle.load(file)
 
-    with open(aspectj.root+'/semantic_similarity.json', 'r') as file:
-        semantic_similarity_score = json.load(file)
+    with open(zxing.root + '/token_matching.json', 'r') as file:
+        token_matching_score = json.load(file)
 
-    params = estiamte_params(src_files, bug_reports, semantic_similarity_score)
-    results = evaluate(src_files, bug_reports, params,  semantic_similarity_score)
+    params = estiamte_params(src_files, bug_reports, token_matching_score)
+    results = evaluate(src_files, bug_reports, params, token_matching_score)
 
     print('Top N Rank:', results[0])
     print('Top 1 Rank %:', results[1][0])
@@ -127,26 +126,11 @@ def main():
     print('MRR:', results[2])
     print('MAP:', results[3])
 
+    # Uncomment these for precision, recall, and f-measure results
+    # print('Precision@N:', results[4])
+    # print('Recall@N:', results[5])
+    # print('F-measure@N:', results[6])
 
-# Uncomment these for precision, recall, and f-measure results
-    #print('Precision@N:', results[4])
-    #print('Recall@N:', results[5])
-    #print('F-measure@N:', results[6])
-    #  Create result files
-    filename = 'Results/' + aspectj.name + '.txt'
-    if os.path.exists(filename):
-        append_write = 'a'  # append if already exists
-    else:
-        append_write = 'w'  # make a new file if not
-
-    resultsFile = open(filename, append_write)
-    resultsFile.write('\nTop N Rank:' + str(results[0]))
-    resultsFile.write('\nTop 1 Rank %:' + str(results[1][0]))
-    resultsFile.write('\nTop 5 Rank %:' + str(results[1][1]))
-    resultsFile.write('\nTop 10 Rank %:' + str(results[1][2]))
-    resultsFile.write('\nMRR:' + str(results[2]))
-    resultsFile.write('\nMAP:' + str(results[3]))
-    resultsFile.close()
 
 
 if __name__ == '__main__':

@@ -3,7 +3,7 @@ import re
 import nltk
 import inflection
 import pickle
-from nltk.stem.snowball import SnowballStemmer
+from nltk.stem import  PorterStemmer
 from nltk.stem import WordNetLemmatizer
 from Datasets import  zxing, aspectj, swt
 from Datasets import Parser
@@ -110,7 +110,7 @@ class SrcPreprocessing:
 
         # Java language keywords
         javaKeywords = {'abstract', 'assert', 'boolean', 'break', 'byte', 'case', 'catch', 'char', 'class', 'const',
-                        'continue', 'default', 'do', 'double', 'else', 'enum', 'extends',  'final', 'finally',
+                        'continue', 'default', 'do', 'double', 'else', 'enum', 'extends', 'final', 'finally',
                         'float', 'for', 'goto', 'if', 'implements', 'import', 'instanceof', 'int', 'interface', 'long',
                         'native', 'new', 'null', 'package', 'private', 'protected', 'public', 'return', 'short',
                         'static', 'strictfp', 'super', 'switch', 'synchronized', 'this', 'throw', 'throws',
@@ -129,18 +129,18 @@ class SrcPreprocessing:
     # Stemming tokens
     def stem(self):
         # Stemmer instance (snow ball)
-        stemmer = WordNetLemmatizer()
+        stemmer = PorterStemmer()
 
         for src in self.srcFiles.values():
 
-            src.fullCode = dict(zip(['stemmed', 'unstemmed'], [[stemmer.lemmatize(token) for token in src.fullCode], src.fullCode]))
-            src.comments = dict(zip(['stemmed', 'unstemmed'],[[stemmer.lemmatize(token) for token in src.comments], src.comments]))
-            src.classNames = dict(zip(['stemmed', 'unstemmed'], [[stemmer.lemmatize(token) for token in src.classNames], src.classNames]))
-            src.attributes = dict(zip(['stemmed', 'unstemmed'], [[stemmer.lemmatize(token) for token in src.attributes], src.attributes]))
-            src.methodNames = dict(zip(['stemmed', 'unstemmed'], [[stemmer.lemmatize(token) for token in src.methodNames], src.methodNames]))
-            src.variables = dict(zip(['stemmed', 'unstemmed'], [[stemmer.lemmatize(token) for token in src.variables], src.variables]))
-            src.fileName = dict(zip(['stemmed', 'unstemmed'], [[stemmer.lemmatize(token) for token in src.fileName], src.fileName]))
-            src.pos_tagged_comments = dict(zip(['stemmed', 'unstemmed'], [[stemmer.lemmatize(token) for token in src.pos_tagged_comments], src.pos_tagged_comments]))
+            src.fullCode = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.fullCode], src.fullCode]))
+            src.comments = dict(zip(['stemmed', 'unstemmed'],[[stemmer.stem(token) for token in src.comments], src.comments]))
+            src.classNames = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.classNames], src.classNames]))
+            src.attributes = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.attributes], src.attributes]))
+            src.methodNames = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.methodNames], src.methodNames]))
+            src.variables = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.variables], src.variables]))
+            src.fileName = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.fileName], src.fileName]))
+            src.pos_tagged_comments = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.pos_tagged_comments], src.pos_tagged_comments]))
 
     # Lemmatizing the tokens
     # def Lemmatize(self):
@@ -170,14 +170,14 @@ class SrcPreprocessing:
 
 def main():
     # Parsing the data of the dataset to make it ready for preprocess
-    parser = Parser(aspectj)
     print('preprocessing started')
+    parser = Parser(zxing)
     # Preprocess the data
     preprocessedSrcFiles = SrcPreprocessing(parser.srcCodeParser())
     preprocessedSrcFiles.preprocess()
 
     # Creating a pickle file to hold the preprocessed data
-    with open(aspectj.root + '/preprocessed_src.pickle', 'wb') as file:
+    with open(zxing.root + '/preprocessed_src.pickle', 'wb') as file:
         pickle.dump(preprocessedSrcFiles.srcFiles, file, protocol=pickle.HIGHEST_PROTOCOL)
 
     print("Src Code preprocessed successfully")
