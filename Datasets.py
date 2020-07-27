@@ -29,11 +29,12 @@ zxing = DataSet('zxing', 'ZXing/ZXing-1.6', 'ZXing/ZXingBugRepository.xml', 'ZXi
 class BugReport:
     """Class representing each bug report"""
 
-    def __init__(self, summary, description, fixedFiles, fixedTime):
+    def __init__(self, summary, description, fixedFiles, fixedTime,openDate):
         self.summary = summary
         self.description = description
         self.fixedFiles = fixedFiles
         self.fixedTime = fixedTime
+        self.openDate = openDate
         self.pos_tagged_summary = None
         self.pos_tagged_description = None
 
@@ -53,6 +54,7 @@ class SourceCode:  # edited
         self.packageName = packageName
         self.pos_tagged_comments = None
         self.lemmatizedComments = None
+        self.srcFixedDate = None
 
 
 class Parser:
@@ -76,7 +78,8 @@ class Parser:
             bug_reports[bug_report['@id']] = BugReport(bug_report['buginformation']['summary'],
                 bug_report['buginformation']['description']
                 if bug_report['buginformation']['description'] else '',
-                [os.path.normpath(path) for path in bug_report['fixedFiles']['file']], bug_report['@fixdate'] if bug_report['@fixdate'] else '',
+                [os.path.normpath(path) for path in bug_report['fixedFiles']['file']], bug_report['@fixdate'] if bug_report['@fixdate'] else '', bug_report['@opendate'] if bug_report['@opendate'] else ''
+
             )
 
         return bug_reports

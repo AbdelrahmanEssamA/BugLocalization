@@ -144,15 +144,16 @@ class ReportPreprocessing:
 
 
 def main():
+    print("Bug report preprocessing started")
     # Parsing the data of the dataset to make it ready for preprocess
-    parser = Parser(zxing)
+    parser = Parser(aspectj)
 
     # Preprocess the data
     preprocessedReports = ReportPreprocessing(parser.bugReportParser())
     preprocessedReports.preprocess()
 
     # Creating a pickle file to hold the preprocessed data
-    with open(zxing.root + '/preprocessed_reports.pickle', 'wb') as file:
+    with open(aspectj.root + '/preprocessed_reports.pickle', 'wb') as file:
         pickle.dump(preprocessedReports.bugReports, file, protocol=pickle.HIGHEST_PROTOCOL)
 
     print("Bug report preprocessed successfully")
