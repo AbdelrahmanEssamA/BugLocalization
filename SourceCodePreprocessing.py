@@ -166,14 +166,14 @@ class SrcPreprocessing:
 
 def main():
     # Parsing the data of the dataset to make it ready for preprocess
-    parser = Parser(aspectj)
+    parser = Parser(swt)
     # Preprocess the data
     print("Src Code preprocessing started")
     preprocessedSrcFiles = SrcPreprocessing(parser.srcCodeParser())
     preprocessedSrcFiles.preprocess()
 
     # Creating a pickle file to hold the preprocessed data
-    with open(aspectj.root + '/preprocessed_src.pickle', 'wb') as file:
+    with open(swt.root + '/preprocessed_src.pickle', 'wb') as file:
         pickle.dump(preprocessedSrcFiles.srcFiles, file, protocol=pickle.HIGHEST_PROTOCOL)
 
     print("Src Code preprocessed successfully")

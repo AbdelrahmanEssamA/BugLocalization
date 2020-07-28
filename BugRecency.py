@@ -10,6 +10,7 @@ from datetime import datetime
 def bugFixingRecency(ReportOpendate, fileFixingDate):
     if ReportOpendate is None or fileFixingDate is None:
         return 0
+
     else:
         return 1 / float(getMonthsBetween(ReportOpendate, fileFixingDate) + 1)
 
@@ -36,16 +37,19 @@ def runBugHistory(bugReports, srcFiles):
                 value.srcFixedDate = br.fixedTime
 
         # for value in srcFiles.values():
-        #    print(value.srcFixedDate)
-    total_recency = []
-    for bx in bugReports.values():
-        total_recency.clear()
-        for src in srcFiles.values():
-            reccency = bugFixingRecency(bx.openDate, src.srcFixedDate)
-            total_recency.append(reccency)
-        scores.append(total_recency)
-    return scores
+        # print(value.srcFixedDate)
+    with open(aspectj.root + '/bugRecency.json', 'w') as file:
+        for bugRep in bugReports.values():
+            total_recency = []
+            for src in srcFiles.values():
+                if src in bugRep.fixedFiles:
+                    reccency = 0
+                else:
+                    reccency = bugFixingRecency(bugRep.openDate, src.srcFixedDate)
 
+                total_recency.append(reccency)
+            scores.append(total_recency)
+        json.dump(scores, file)
 
 def main():
     print("Bug history started")
@@ -56,15 +60,9 @@ def main():
     with open(aspectj.root + '/preprocessed_src.pickle', 'rb') as file:
         src_files = pickle.load(file)
 
-    bugRecency = runBugHistory(bug_reports, src_files)
-    with open(aspectj.root + '/bugRecency.json', 'w') as file:
-        json.dump(bugRecency, file)
-
+    runBugHistory(bug_reports, src_files)
     print('Bug history finished')
 
 
 if __name__ == '__main__':
     main()
-
-# most recent
-#

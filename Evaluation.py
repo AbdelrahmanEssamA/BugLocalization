@@ -4,7 +4,6 @@ import json
 import operator
 import numpy as np
 from sphinx.addnodes import toctree
-
 from Datasets import zxing, aspectj, swt
 from scipy import optimize
 
@@ -117,25 +116,26 @@ def evaluate(src_files, bug_reports, coeffs, *rank_scores):
 
 def main():
     print('getting files..')
-    with open(aspectj.root + '/preprocessed_src.pickle', 'rb') as file:
+    currentDataset = aspectj
+    with open(currentDataset.root + '/preprocessed_src.pickle', 'rb') as file:
         src_files = pickle.load(file)
-    with open(aspectj.root + '/preprocessed_reports.pickle', 'rb') as file:
+    with open(currentDataset.root + '/preprocessed_reports.pickle', 'rb') as file:
         bug_reports = pickle.load(file)
 
-    with open(aspectj.root + '/vsm_similarity.json', 'r') as file:
+    with open(currentDataset.root + '/vsm_similarity.json', 'r') as file:
         vsm_similarity_score = json.load(file)
-    with open(aspectj.root + '/semantic_similarity.json', 'r') as file:
+    with open(currentDataset.root + '/semantic_similarity.json', 'r') as file:
         semantic_similarity_score = json.load(file)
-    with open(aspectj.root + '/token_matching.json', 'r') as file:
+    with open(currentDataset.root + '/token_matching.json', 'r') as file:
         token_matching_score = json.load(file)
-    with open(aspectj.root + '/bugRecency.json', 'r') as file:
+    with open(currentDataset.root + '/bugRecency.json', 'r') as file:
         bug_history_score = json.load(file)
 
     print('evaluation started')
     print('estimating...')
-    params = estiamte_params(src_files, bug_reports, vsm_similarity_score, token_matching_score, semantic_similarity_score,  bug_history_score)
+    params = estiamte_params(src_files, bug_reports,token_matching_score, vsm_similarity_score,  semantic_similarity_score,  bug_history_score)
     print('evaluating...')
-    results = evaluate(src_files, bug_reports, params, vsm_similarity_score, token_matching_score, semantic_similarity_score, bug_history_score)
+    results = evaluate(src_files, bug_reports, params, token_matching_score, vsm_similarity_score,  semantic_similarity_score, bug_history_score)
 
     print('Top N Rank:', results[0])
     print('Top 1 Rank %:', results[1][0])
@@ -150,7 +150,7 @@ def main():
     print('F-measure@N:', results[6])
 
     #  Create result files
-    filename = 'Results/' + aspectj.name + '.txt'
+    filename = 'Results/' + currentDataset.name + '.txt'
     if os.path.exists(filename):
         append_write = 'a'  # append if already exists
     else:
@@ -165,7 +165,6 @@ def main():
     resultsFile.write('\nMAP:' + str(results[3]))
     resultsFile.write('\n-----------------------------')
     resultsFile.close()
-
 
 if __name__ == '__main__':
     main()
