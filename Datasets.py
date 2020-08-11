@@ -53,7 +53,7 @@ class SourceCode:  # edited
         self.exact_file_name = fileName[0]
         self.packageName = packageName
         self.pos_tagged_comments = None
-        self.lemmatizedComments = None
+
         self.srcFixedDate = None
 
 
@@ -111,7 +111,7 @@ class Parser:
             try:
                 parseTree = javalang.parse.parse(src)
                 for path, node in parseTree.filter(javalang.tree.VariableDeclarator):
-
+                    # print(path)
                     if isinstance(path[-2], javalang.tree.FieldDeclaration):  # Item second to last
                         attributes.append(node.name)
 
@@ -125,6 +125,7 @@ class Parser:
             if parseTree:
                 if parseTree.imports:
                     last_imp_path = parseTree.imports[-1].path  # Last item
+                    #print
                     src = src[src.index(last_imp_path) + len(last_imp_path) + 1:]
 
                 elif parseTree.package:

@@ -3,8 +3,8 @@ import re
 import nltk
 import inflection
 import pickle
-from nltk.stem.snowball import SnowballStemmer
 from nltk.stem import WordNetLemmatizer
+from nltk.stem import PorterStemmer
 from Datasets import  zxing, aspectj, swt
 from Datasets import Parser
 
@@ -129,18 +129,18 @@ class SrcPreprocessing:
     # Stemming tokens
     def stem(self):
         # Stemmer instance (snow ball)
-        stemmer = SnowballStemmer("english")
-
+        stemmer = PorterStemmer()
+        lemmatizer = WordNetLemmatizer()
         for src in self.srcFiles.values():
 
-            src.fullCode = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.fullCode], src.fullCode]))
-            src.comments = dict(zip(['stemmed', 'unstemmed'],[[stemmer.stem(token) for token in src.comments], src.comments]))
-            src.classNames = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.classNames], src.classNames]))
-            src.attributes = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.attributes], src.attributes]))
-            src.methodNames = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.methodNames], src.methodNames]))
-            src.variables = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.variables], src.variables]))
-            src.fileName = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.fileName], src.fileName]))
-            src.pos_tagged_comments = dict(zip(['stemmed', 'unstemmed'], [[stemmer.stem(token) for token in src.pos_tagged_comments], src.pos_tagged_comments]))
+            src.fullCode = dict(zip(['stemmed', 'unstemmed', 'lemma'], [[stemmer.stem(token) for token in src.fullCode], src.fullCode, [lemmatizer.lemmatize(token) for token in src.fullCode]]))
+            src.comments = dict(zip(['stemmed', 'unstemmed', 'lemma'],[[stemmer.stem(token) for token in src.comments], src.comments, [lemmatizer.lemmatize(token) for token in src.comments]]))
+            src.classNames = dict(zip(['stemmed', 'unstemmed', 'lemma'], [[stemmer.stem(token) for token in src.classNames], src.classNames, [lemmatizer.lemmatize(token) for token in src.classNames] ]))
+            src.attributes = dict(zip(['stemmed', 'unstemmed', 'lemma'], [[stemmer.stem(token) for token in src.attributes], src.attributes, [lemmatizer.lemmatize(token) for token in src.attributes]]))
+            src.methodNames = dict(zip(['stemmed', 'unstemmed', 'lemma'], [[stemmer.stem(token) for token in src.methodNames], src.methodNames,[lemmatizer.lemmatize(token) for token in src.methodNames]]))
+            src.variables = dict(zip(['stemmed', 'unstemmed', 'lemma'], [[stemmer.stem(token) for token in src.variables], src.variables, [lemmatizer.lemmatize(token) for token in src.variables]]))
+            src.fileName = dict(zip(['stemmed', 'unstemmed', 'lemma'], [[stemmer.stem(token) for token in src.fileName], src.fileName, [lemmatizer.lemmatize(token) for token in src.fileName]]))
+            src.pos_tagged_comments = dict(zip(['stemmed', 'unstemmed', 'lemma'], [[stemmer.stem(token) for token in src.pos_tagged_comments], src.pos_tagged_comments, [lemmatizer.lemmatize(token) for token in src.pos_tagged_comments]]))
 
 
     # Running preprocessing functions for src code files
@@ -164,16 +164,17 @@ class SrcPreprocessing:
         self.stem()
 
 
-def main():
+def main(data_set):
     # Parsing the data of the dataset to make it ready for preprocess
-    parser = Parser(swt)
+    currentDataset = data_set
+    parser = Parser(currentDataset)
     # Preprocess the data
     print("Src Code preprocessing started")
     preprocessedSrcFiles = SrcPreprocessing(parser.srcCodeParser())
     preprocessedSrcFiles.preprocess()
 
     # Creating a pickle file to hold the preprocessed data
-    with open(swt.root + '/preprocessed_src.pickle', 'wb') as file:
+    with open(currentDataset.root + '/preprocessed_src.pickle', 'wb') as file:
         pickle.dump(preprocessedSrcFiles.srcFiles, file, protocol=pickle.HIGHEST_PROTOCOL)
 
     print("Src Code preprocessed successfully")

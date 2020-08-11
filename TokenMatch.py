@@ -1,7 +1,6 @@
 import pickle
 import json
 from sklearn import preprocessing
-
 import numpy as np
 from Datasets import  zxing, aspectj, swt
 
@@ -13,11 +12,11 @@ def check_matchings(src_files, bug_reports):
     for report in bug_reports.values():
         matched_count = []
         summary_set = report.summary
-        pos_tagged_sum_desc = (report.pos_tagged_summary['stemmed'] + report.pos_tagged_description['stemmed'])
+        pos_tagged_sum_desc = (report.pos_tagged_summary['unstemmed'] + report.pos_tagged_description['unstemmed'])
 
         for src in src_files.values():
-            if src.fileName['stemmed']:
-                common_tokens = len(set(summary_set['stemmed']) & set([src.fileName['stemmed'][0]]))
+            if src.fileName['unstemmed']:
+                common_tokens = len(set(summary_set['unstemmed']) & set([src.fileName['unstemmed'][0]]))
 
             matched_count.append(common_tokens)
 
@@ -25,13 +24,13 @@ def check_matchings(src_files, bug_reports):
         if sum(matched_count) == 0:
             matched_count = []
             for src in src_files.values():
-                common_tokens = len(set(pos_tagged_sum_desc) & set(src.fileName['stemmed'] + src.classNames['stemmed'] + src.methodNames['stemmed']))
+                common_tokens = len(set(pos_tagged_sum_desc) & set(src.fileName['unstemmed'] + src.classNames['unstemmed'] + src.methodNames['unstemmed']))
 
                 if not common_tokens:
-                    common_tokens = (len(set(pos_tagged_sum_desc) & set(src.comments['stemmed'])) - len(set(src.comments['stemmed'])))
+                    common_tokens = (len(set(pos_tagged_sum_desc) & set(src.comments['unstemmed'])) - len(set(src.comments['unstemmed'])))
 
                 if not common_tokens:
-                    common_tokens = (len(set(pos_tagged_sum_desc) & set(src.attributes['stemmed'])) - len(set(src.attributes['stemmed'])))
+                    common_tokens = (len(set(pos_tagged_sum_desc) & set(src.attributes['unstemmed'])) - len(set(src.attributes['unstemmed'])))
 
                 matched_count.append(common_tokens)
 
@@ -45,21 +44,22 @@ def check_matchings(src_files, bug_reports):
     return scores
 
 
-def main():
+def main(data_Set):
+    currentDataset = data_Set
     print("Token matching started")
     # Unpickle preprocessed data
-    with open(zxing.root + '/preprocessed_src.pickle', 'rb') as file:
+    with open(currentDataset.root + '/preprocessed_src.pickle', 'rb') as file:
         src_files = pickle.load(file)
 
-    with open(zxing.root + '/preprocessed_reports.pickle', 'rb') as file:
+    with open(currentDataset.root + '/preprocessed_reports.pickle', 'rb') as file:
         bug_reports = pickle.load(file)
 
     scores = check_matchings(src_files,bug_reports)
 
     # Saving similarities in a json file
-    with open(zxing.root + '/token_matching.json', 'w') as file:
+    with open(currentDataset.root + '/token_matching.json', 'w') as file:
         json.dump(scores, file)
-    print('Token matching  finished')
+    print('Token matching finished')
 
 if __name__ == '__main__':
     main()

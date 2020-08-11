@@ -16,7 +16,7 @@ class Word2Vec:
         nlp = spacy.load('en_core_web_lg')
 
         # Pass the src file tokens to glove
-        srcDocs = [nlp(' '.join(src.fileName['unstemmed'] + src.classNames['unstemmed'] + src.attributes['unstemmed'] + src.comments['unstemmed'] + src.methodNames['unstemmed']))
+        srcDocs = [nlp(' '.join(src.fileName['lemma'] + src.classNames['lemma'] + src.attributes['lemma'] + src.comments['lemma'] + src.methodNames['lemma']))
                    for src in srcFiles.values()]
         mimMax = MinMaxScaler()
         simTable = []
@@ -24,7 +24,7 @@ class Word2Vec:
         # Iterating on all bug reports
         for report in bugReport.values():
             # Pass the src file tokens to glove
-            report_doc = nlp(' '.join(report.summary['unstemmed'] + report.pos_tagged_description['unstemmed']))
+            report_doc = nlp(' '.join(report.summary['lemma'] + report.pos_tagged_description['lemma']))
             scores = []
 
             for srcDoc in srcDocs:
@@ -34,23 +34,26 @@ class Word2Vec:
                 scores.append(similarity)
 
             scores = np.array([float(count) for count in scores]).reshape(-1, 1)
+           # print (scores)
             normalizedScores = np.concatenate(mimMax.fit_transform(scores))
+
             simTable.append(normalizedScores.tolist())
 
         return simTable
 
 
-def main():
+def main(data_Set):
     print("word2vec started")
-    with open(zxing.root + '/preprocessed_src.pickle', 'rb') as file:
+    currentDataset = data_Set
+    with open(currentDataset.root + '/preprocessed_src.pickle', 'rb') as file:
         srcFiles = pickle.load(file)
 
-    with open(zxing.root + '/preprocessed_reports.pickle', 'rb') as file:
+    with open(currentDataset.root + '/preprocessed_reports.pickle', 'rb') as file:
         bugReport = pickle.load(file)
 
     data = Word2Vec()
     simTable = data.getSematicSemilarity(srcFiles, bugReport)
-    with open(zxing.root + '/semantic_similarity.json', 'w') as file:
+    with open(currentDataset.root + '/semantic_similarity.json', 'w') as file:
         json.dump(simTable, file)
 
     print('Glove component executed successfully')

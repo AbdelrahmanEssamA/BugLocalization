@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fab60e24-7bbe-4d17-bdfe-bf1985bfca36" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AspectJ/semantic_similarity.json" beforeDir="false" afterPath="$PROJECT_DIR$/AspectJ/semantic_similarity.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AspectJ/token_matching.json" beforeDir="false" afterPath="$PROJECT_DIR$/AspectJ/token_matching.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AspectJ/vsm_similarity.json" beforeDir="false" afterPath="$PROJECT_DIR$/AspectJ/vsm_similarity.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BugRecency.py" beforeDir="false" afterPath="$PROJECT_DIR$/BugRecency.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BugReportPreprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/BugReportPreprocessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Datasets.py" beforeDir="false" afterPath="$PROJECT_DIR$/Datasets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Evaluation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/aspectj.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Results/aspectj.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/swt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Results/swt.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/zxing.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Results/zxing.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SWT/semantic_similarity.json" beforeDir="false" afterPath="$PROJECT_DIR$/SWT/semantic_similarity.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SWT/token_matching.json" beforeDir="false" afterPath="$PROJECT_DIR$/SWT/token_matching.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SWT/vsm_similarity.json" beforeDir="false" afterPath="$PROJECT_DIR$/SWT/vsm_similarity.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SourceCodePreprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/SourceCodePreprocessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TokenMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/TokenMatch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WordEmbedding.py" beforeDir="false" afterPath="$PROJECT_DIR$/WordEmbedding.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZXing/preprocessed_src.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/ZXing/preprocessed_src.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZXing/vsm_similarity.json" beforeDir="false" afterPath="$PROJECT_DIR$/ZXing/vsm_similarity.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.csv" beforeDir="false" afterPath="$PROJECT_DIR$/output.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rVSM.py" beforeDir="false" afterPath="$PROJECT_DIR$/rVSM.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ZnkvAVwPqjvgQLy8SSaLZ9ebac" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.splitter.proportion" value="0.0" />
+  </component>
+  <component name="RunManager" selected="Python.Main">
+    <configuration name="Evaluation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BugLocalization" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Evaluation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BugLocalization" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TokenMatch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BugLocalization" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TokenMatch.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="WordEmbedding" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BugLocalization" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/WordEmbedding.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="BugLocalization" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="rVSM" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BugLocalization" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rVSM.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Main" />
+        <item itemvalue="Python.Evaluation" />
+        <item itemvalue="Python.WordEmbedding" />
+        <item itemvalue="Python.TokenMatch" />
+        <item itemvalue="Python.rVSM" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fab60e24-7bbe-4d17-bdfe-bf1985bfca36" name="Default Changelist" comment="" />
+      <created>1585482473588</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585482473588</updated>
+      <workItem from="1585482492342" duration="4189000" />
+      <workItem from="1585574692342" duration="5002000" />
+      <workItem from="1585929402563" duration="1178000" />
+      <workItem from="1586284719948" duration="2979000" />
+      <workItem from="1586383078586" duration="332000" />
+      <workItem from="1586634291974" duration="2000" />
+      <workItem from="1587149219215" duration="11848000" />
+      <workItem from="1587219031512" duration="5585000" />
+      <workItem from="1587226420726" duration="9176000" />
+      <workItem from="1587236137183" duration="4461000" />
+      <workItem from="1587300305444" duration="13332000" />
+      <workItem from="1587419225804" duration="3235000" />
+      <workItem from="1587423603285" duration="7692000" />
+      <workItem from="1587433929757" duration="1952000" />
+      <workItem from="1587438334305" duration="2641000" />
+      <workItem from="1587492610462" duration="2071000" />
+      <workItem from="1587500685195" duration="3137000" />
+      <workItem from="1587509194530" duration="4929000" />
+      <workItem from="1587585016803" duration="3579000" />
+      <workItem from="1587589001488" duration="982000" />
+      <workItem from="1587590029056" duration="5536000" />
+      <workItem from="1587650531821" duration="637000" />
+      <workItem from="1587927684462" duration="3688000" />
+      <workItem from="1587931423008" duration="276000" />
+      <workItem from="1587931762325" duration="419000" />
+      <workItem from="1587932907383" duration="32000" />
+      <workItem from="1587933350174" duration="5000" />
+      <workItem from="1587933866261" duration="98000" />
+      <workItem from="1587934119889" duration="13000" />
+      <workItem from="1587934134978" duration="58000" />
+      <workItem from="1587934315990" duration="2665000" />
+      <workItem from="1587977152091" duration="2577000" />
+      <workItem from="1590405634779" duration="624000" />
+      <workItem from="1590915192099" duration="1055000" />
+      <workItem from="1590916414165" duration="2067000" />
+      <workItem from="1590921036748" duration="2335000" />
+      <workItem from="1590926609285" duration="1163000" />
+      <workItem from="1591093723751" duration="139000" />
+      <workItem from="1591229172718" duration="1929000" />
+      <workItem from="1591233937315" duration="69000" />
+      <workItem from="1591239363514" duration="214000" />
+      <workItem from="1591239595822" duration="1737000" />
+      <workItem from="1591280627623" duration="401000" />
+      <workItem from="1591281698381" duration="83000" />
+      <workItem from="1591283159983" duration="481000" />
+      <workItem from="1595775088609" duration="3494000" />
+      <workItem from="1595779473054" duration="10040000" />
+      <workItem from="1595841966915" duration="6498000" />
+      <workItem from="1595855383548" duration="2392000" />
+      <workItem from="1595956563903" duration="13790000" />
+      <workItem from="1596025512183" duration="1798000" />
+      <workItem from="1596284170429" duration="18286000" />
+      <workItem from="1596335161080" duration="229000" />
+      <workItem from="1596335524144" duration="196000" />
+      <workItem from="1596369329687" duration="10364000" />
+      <workItem from="1596381239256" duration="18104000" />
+      <workItem from="1596459606785" duration="7264000" />
+      <workItem from="1596537203170" duration="587000" />
+      <workItem from="1596538550358" duration="2137000" />
+      <workItem from="1596554510530" duration="6067000" />
+      <workItem from="1596564035248" duration="244000" />
+      <workItem from="1596577573272" duration="2991000" />
+      <workItem from="1596629346730" duration="6708000" />
+      <workItem from="1596639716285" duration="55000" />
+      <workItem from="1596643411619" duration="5728000" />
+      <workItem from="1596664131887" duration="1504000" />
+      <workItem from="1596671662161" duration="1932000" />
+      <workItem from="1597073150424" duration="11000" />
+      <workItem from="1597093901291" duration="2242000" />
+      <workItem from="1597096520468" duration="299000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="722" y="309" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596465072846">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="722" y="309" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1596465072846" />
+    <state x="260" y="278" key="FileChooserDialogImpl" timestamp="1596639771499">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="260" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1596639771499" />
+    <state x="314" y="289" key="FileChooserDialogImpl/63.0.1857.1080@63.0.1857.1080" timestamp="1591283491158" />
+    <state width="914" height="325" key="GridCell.Tab.0.bottom" timestamp="1596639661111">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="325" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596639661111" />
+    <state width="914" height="325" key="GridCell.Tab.0.center" timestamp="1596639661111">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="325" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596639661111" />
+    <state width="914" height="325" key="GridCell.Tab.0.left" timestamp="1596639661111">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="325" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596639661111" />
+    <state width="914" height="325" key="GridCell.Tab.0.right" timestamp="1596639661111">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="325" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596639661111" />
+    <state width="914" height="325" key="GridCell.Tab.1.bottom" timestamp="1596639661112">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="325" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596639661112" />
+    <state width="914" height="325" key="GridCell.Tab.1.center" timestamp="1596639661112">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="325" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596639661112" />
+    <state width="914" height="325" key="GridCell.Tab.1.left" timestamp="1596639661111">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="325" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596639661111" />
+    <state width="914" height="325" key="GridCell.Tab.1.right" timestamp="1596639661112">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="325" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596639661112" />
+    <state x="860" y="158" key="SettingsEditor" timestamp="1596392075715">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="860" y="158" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1596392075715" />
+    <state x="355" y="486" key="com.intellij.ide.util.TipDialog" timestamp="1597093938681">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="355" y="486" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597093938681" />
+    <state x="63" y="0" key="com.intellij.ide.util.TipDialog/63.0.1857.1080@63.0.1857.1080" timestamp="1591281744705" />
+    <state x="379" y="227" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1596368966005">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="379" y="227" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1596368966005" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1595963059620">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1595963059620" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/BugLocalization$Datasets.coverage" NAME="Datasets Coverage Results" MODIFIED="1587434868078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BugLocalization$SourceCodePreprocessing.coverage" NAME="SourceCodePreprocessing Coverage Results" MODIFIED="1587590803189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gp$Evaluation.coverage" NAME="Evaluation Coverage Results" MODIFIED="1596634926385" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BugLocalization$Evaluation.coverage" NAME="Evaluation Coverage Results" MODIFIED="1587157214032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BugLocalization$BugReportPreprocessing.coverage" NAME="BugReportPreprocessing Coverage Results" MODIFIED="1587590776368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

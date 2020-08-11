@@ -1,153 +1,200 @@
-
-Top N Rank:[9, 15, 15]
+rVSM unStemmed
+Top N Rank:[8, 13, 15]
+Top 1 Rank %:0.4
+Top 5 Rank %:0.65
+Top 10 Rank %:0.75
+MRR:0.5058407451083523
+MAP:0.430518125603768
+-----------------------------
+rVSM Stemmed
+Top N Rank:[7, 14, 15]
+Top 1 Rank %:0.35
+Top 5 Rank %:0.7
+Top 10 Rank %:0.75
+MRR:0.4843894812084467
+MAP:0.41747979725335843
+-----------------------------
+rVSM lemmatized
+Top N Rank:[9, 14, 15]
 Top 1 Rank %:0.45
-Top 5 Rank %:0.75
+Top 5 Rank %:0.7
 Top 10 Rank %:0.75
-MRR:0.5801299335477834
-MAP:0.47173067068533053
-Top N Rank:[11, 15, 15]
-Top 1 Rank %:0.55
-Top 5 Rank %:0.75
-Top 10 Rank %:0.75
-MRR:0.6298825208475187
-MAP:0.5186035285277047
-Top N Rank:[11, 15, 15]
-Top 1 Rank %:0.55
-Top 5 Rank %:0.75
-Top 10 Rank %:0.75
-MRR:0.6252595435647653
-MAP:0.5149677203174494
-Top N Rank:[11, 15, 15]
-Top 1 Rank %:0.55
-Top 5 Rank %:0.75
-Top 10 Rank %:0.75
-MRR:0.6296702395585216
-MAP:0.5205001351697355
-Top N Rank:[11, 15, 15]
-Top 1 Rank %:0.55
-Top 5 Rank %:0.75
-Top 10 Rank %:0.75
-MRR:0.6295461298031005
-MAP:0.5207323908996626
-Top N Rank:[11, 15, 15]
-Top 1 Rank %:0.55
-Top 5 Rank %:0.75
-Top 10 Rank %:0.75
-MRR:0.6295461298031005
-MAP:0.5207323908996626
-Top N Rank:[11, 15, 15]
-Top 1 Rank %:0.55
-Top 5 Rank %:0.75
-Top 10 Rank %:0.75
-MRR:0.6295461298031005
-MAP:0.5207323908996626
-Top N Rank:[11, 15, 15]
-Top 1 Rank %:0.55
-Top 5 Rank %:0.75
-Top 10 Rank %:0.75
-MRR:0.6295461298031005
-MAP:0.5207323908996626
-Top N Rank:[12, 17, 19]
-Top 1 Rank %:0.6
-Top 5 Rank %:0.85
-Top 10 Rank %:0.95
-MRR:0.7079365079365079
-MAP:0.6034335326079672
-Top N Rank:[12, 17, 19]
-Top 1 Rank %:0.6
-Top 5 Rank %:0.85
-Top 10 Rank %:0.95
-MRR:0.7073809523809523
-MAP:0.6001150882391137
+MRR:0.5582641566121701
+MAP:0.4602044500742134
 -----------------------------
-Top N Rank:[12, 17, 19]
-Top 1 Rank %:0.6
-Top 5 Rank %:0.85
-Top 10 Rank %:0.95
-MRR:0.7079365079365079
-MAP:0.6053205992923484
+rVSM snowball stemmer
+Top N Rank: [9, 14, 14]
+Top 1 Rank %: 0.45
+Top 5 Rank %: 0.7
+Top 10 Rank %: 0.7
+MRR: 0.5581061998681067
+MAP: 0.45859188663066747
 -----------------------------
-Top N Rank:[11, 15, 15]
-Top 1 Rank %:0.55
-Top 5 Rank %:0.75
-Top 10 Rank %:0.75
-MRR:0.6296702395585216
-MAP:0.5205001351697355
+Token Matching stem
+Top N Rank:[5, 11, 12]
+Top 1 Rank %:0.25
+Top 5 Rank %:0.55
+Top 10 Rank %:0.6
+MRR:0.3827638544613296
+MAP:0.3030364607093144
 -----------------------------
-Top N Rank:[12, 17, 19]
-Top 1 Rank %:0.6
-Top 5 Rank %:0.85
-Top 10 Rank %:0.95
-MRR:0.7073809523809523
-MAP:0.6001150882391137
+Token Matching lemmatize
+Top N Rank:[5, 11, 12]
+Top 1 Rank %:0.25
+Top 5 Rank %:0.55
+Top 10 Rank %:0.6
+MRR:0.3827638544613296
+MAP:0.3030364607093144
 -----------------------------
-Top N Rank:[12, 17, 19]
-Top 1 Rank %:0.6
-Top 5 Rank %:0.85
-Top 10 Rank %:0.95
-MRR:0.7073809523809523
-MAP:0.6001150882391137
+Token Matching Unstemmed
+Top N Rank:[4, 10, 11]
+Top 1 Rank %:0.2
+Top 5 Rank %:0.5
+Top 10 Rank %:0.55
+MRR:0.35574780241042975
+MAP:0.2906923190098949
 -----------------------------
-Top N Rank:[12, 17, 19]
-Top 1 Rank %:0.6
-Top 5 Rank %:0.85
-Top 10 Rank %:0.95
-MRR:0.7079365079365079
-MAP:0.6055945685291659
+Glove Unstemmed
+Top N Rank:[5, 10, 14]
+Top 1 Rank %:0.25
+Top 5 Rank %:0.5
+Top 10 Rank %:0.7
+MRR:0.38160244575685753
+MAP:0.27616692830933104
 -----------------------------
-Top N Rank:[12, 17, 19]
-Top 1 Rank %:0.6
-Top 5 Rank %:0.85
-Top 10 Rank %:0.95
-MRR:0.7079365079365079
-MAP:0.6055945685291659
+Glove stemmed
+Top N Rank:[6, 10, 11]
+Top 1 Rank %:0.3
+Top 5 Rank %:0.5
+Top 10 Rank %:0.55
+MRR:0.38856858251649296
+MAP:0.29906503528442663
 -----------------------------
-Top N Rank:[12, 17, 19]
-Top 1 Rank %:0.6
-Top 5 Rank %:0.85
-Top 10 Rank %:0.95
-MRR:0.7079365079365079
-MAP:0.6055945685291659
+Glove lemma mix
+Top N Rank:[5, 12, 14]
+Top 1 Rank %:0.25
+Top 5 Rank %:0.6
+Top 10 Rank %:0.7
+MRR:0.38984464487399506
+MAP:0.283467393700816
 -----------------------------
-Top N Rank:[12, 17, 19]
-Top 1 Rank %:0.6
-Top 5 Rank %:0.85
-Top 10 Rank %:0.95
-MRR:0.7079365079365079
-MAP:0.6055945685291659
+Glove lemma no pos tags
+Top N Rank:[5, 12, 13]
+Top 1 Rank %:0.25
+Top 5 Rank %:0.6
+Top 10 Rank %:0.65
+MRR:0.38573991797676005
+MAP:0.27686593455296127
 -----------------------------
-Top N Rank:[12, 17, 19]
-Top 1 Rank %:0.6
-Top 5 Rank %:0.85
-Top 10 Rank %:0.95
-MRR:0.7079365079365079
-MAP:0.6055945685291659
+Glove lemma pos tags
+Top N Rank:[4, 10, 12]
+Top 1 Rank %:0.2
+Top 5 Rank %:0.5
+Top 10 Rank %:0.6
+MRR:0.34692234773626873
+MAP:0.2370002267717048
 -----------------------------
-Top N Rank:[13, 17, 17]
+tok lemma again
+Top N Rank:[4, 10, 11]
+Top 1 Rank %:0.2
+Top 5 Rank %:0.5
+Top 10 Rank %:0.55
+MRR:0.35574780241042975
+MAP:0.2906923190098949
+-----------------------------
+Mix 1
+Top N Rank:[13, 17, 19]
 Top 1 Rank %:0.65
 Top 5 Rank %:0.85
-Top 10 Rank %:0.85
-MRR:0.7109962121212121
-MAP:0.6201402592257278
+Top 10 Rank %:0.95
+MRR:0.743452380952381
+MAP:0.6190470620066209
 -----------------------------
-Top N Rank:[12, 17, 19]
-Top 1 Rank %:0.6
+gensim
+Top N Rank:[1, 1, 1]
+Top 1 Rank %:0.05
+Top 5 Rank %:0.05
+Top 10 Rank %:0.05
+MRR:0.059859665020389606
+MAP:0.060223293318407735
+-----------------------------
+gensim
+Top N Rank:[0, 0, 1]
+Top 1 Rank %:0.0
+Top 5 Rank %:0.0
+Top 10 Rank %:0.05
+MRR:0.013273496220558506
+MAP:0.012851955422197945
+-----------------------------
+gensim
+Top N Rank:[0, 0, 2]
+Top 1 Rank %:0.0
+Top 5 Rank %:0.0
+Top 10 Rank %:0.1
+MRR:0.030186510664971626
+MAP:0.02646792650098369
+-----------------------------
+rvsm pos tagged
+Top N Rank:[8, 14, 14]
+Top 1 Rank %:0.4
+Top 5 Rank %:0.7
+Top 10 Rank %:0.7
+MRR:0.5081295503722166
+MAP:0.42727918095323936
+-----------------------------
+rvsm pos tagged
+Top N Rank:[4, 11, 11]
+Top 1 Rank %:0.2
+Top 5 Rank %:0.55
+Top 10 Rank %:0.55
+MRR:0.3588415030853511
+MAP:0.29129254059597726
+-----------------------------
+rvsm pos tagged testing
+Top N Rank:[4, 10, 11]
+Top 1 Rank %:0.2
+Top 5 Rank %:0.5
+Top 10 Rank %:0.55
+MRR:0.3557469270832762
+MAP:0.29069056086109385
+-----------------------------
+rvsm pos tagged testing
+Top N Rank:[4, 10, 11]
+Top 1 Rank %:0.2
+Top 5 Rank %:0.5
+Top 10 Rank %:0.55
+MRR:0.35574780241042975
+MAP:0.2906923190098949
+-----------------------------
+rvsm pos tagged testing
+Top N Rank:[5, 12, 14]
+Top 1 Rank %:0.25
+Top 5 Rank %:0.6
+Top 10 Rank %:0.7
+MRR:0.38958087982478223
+MAP:0.284152495074914
+-----------------------------
+before bug recency
+Top N Rank:[11, 14, 15]
+Top 1 Rank %:0.55
+Top 5 Rank %:0.7
+Top 10 Rank %:0.75
+MRR:0.6274261035059185
+MAP:0.5196850433027418
+-----------------------------
+before bug recency
+Top N Rank:[13, 17, 19]
+Top 1 Rank %:0.65
 Top 5 Rank %:0.85
 Top 10 Rank %:0.95
-MRR:0.7079365079365079
-MAP:0.6055945685291659
+MRR:0.743452380952381
+MAP:0.6203676735845853
 -----------------------------
-Top N Rank:[12, 17, 19]
-Top 1 Rank %:0.6
+before bug recency
+Top N Rank:[13, 17, 19]
+Top 1 Rank %:0.65
 Top 5 Rank %:0.85
 Top 10 Rank %:0.95
-MRR:0.7079365079365079
-MAP:0.6055945685291659
------------------------------
-Top N Rank:[12, 17, 19]
-Top 1 Rank %:0.6
-Top 5 Rank %:0.85
-Top 10 Rank %:0.95
-MRR:0.7079365079365079
-MAP:0.6055945685291659
+MRR:0.73625
+MAP:0.6134456026000144
 -----------------------------

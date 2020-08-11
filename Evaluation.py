@@ -3,7 +3,6 @@ import os
 import json
 import operator
 import numpy as np
-from sphinx.addnodes import toctree
 from Datasets import zxing, aspectj, swt
 from scipy import optimize
 
@@ -12,25 +11,26 @@ def combine_rank_scores(coeffs, *rank_scores):
     final_score = []
     for scores in zip(*rank_scores):
         combined_score = coeffs @ np.array(scores)
+        #print
         final_score.append(combined_score)
 
     return final_score
 
-
+# cost will return a number that will rank files based on it
 def cost(coeffs, src_files, bug_reports, *rank_scores):
     final_scores = combine_rank_scores(coeffs, *rank_scores)
     mrr = []
     mean_avgp = []
 
     for i, report in enumerate(bug_reports.items()):
-        src_ranks, _ = zip(*sorted(zip(src_files.keys(), final_scores[i]),
-                                   key=operator.itemgetter(1), reverse=True))
+        src_ranks, _ = zip(*sorted(zip(src_files.keys(), final_scores[i]), key=operator.itemgetter(1), reverse=True))
 
         # Getting reported fixed files
         fixed_files = report[1].fixedFiles
 
         # Getting the ranks of reported fixed files
         relevant_ranks = sorted(src_ranks.index(fixed) + 1 for fixed in fixed_files)
+        #print(relevant_ranks)
         # MRR
         min_rank = relevant_ranks[0]
         mrr.append(1 / min_rank)
@@ -40,12 +40,15 @@ def cost(coeffs, src_files, bug_reports, *rank_scores):
 
     return -1 * (np.mean(mrr) + np.mean(mean_avgp))
 
+#  estimate weight paramters
 
 def estiamte_params(src_files, bug_reports, *rank_scores):
     res = optimize.differential_evolution(
         cost, bounds=[(0, 1)] * len(rank_scores),
         args=(src_files, bug_reports, *rank_scores),
         strategy='randtobest1exp', polish=True, seed=458711526
+        # seed random int generation
+        # randtobest1exp
     )
 
     return res.x.tolist()
@@ -113,10 +116,11 @@ def evaluate(src_files, bug_reports, coeffs, *rank_scores):
             np.mean(precision_at_n, axis=1).tolist(), np.mean(recall_at_n, axis=1).tolist(),
             np.mean(f_measure_at_n, axis=1).tolist())
 
+    #lema, unstemed, lemma
+def main(data_set):
 
-def main():
-    print('getting files..')
-    currentDataset = aspectj
+    experimentName = 'before bug recency'
+    currentDataset = data_set
     with open(currentDataset.root + '/preprocessed_src.pickle', 'rb') as file:
         src_files = pickle.load(file)
     with open(currentDataset.root + '/preprocessed_reports.pickle', 'rb') as file:
@@ -133,9 +137,10 @@ def main():
 
     print('evaluation started')
     print('estimating...')
-    params = estiamte_params(src_files, bug_reports,token_matching_score, vsm_similarity_score,  semantic_similarity_score,  bug_history_score)
+    params = estiamte_params(src_files,bug_reports, vsm_similarity_score,  bug_history_score ,semantic_similarity_score)
     print('evaluating...')
-    results = evaluate(src_files, bug_reports, params, token_matching_score, vsm_similarity_score,  semantic_similarity_score, bug_history_score)
+    results = evaluate(src_files, bug_reports, params,vsm_similarity_score,  bug_history_score,semantic_similarity_score)
+
 
     print('Top N Rank:', results[0])
     print('Top 1 Rank %:', results[1][0])
@@ -157,6 +162,7 @@ def main():
         append_write = 'w'  # make a new file if not
 
     resultsFile = open(filename, append_write)
+    resultsFile.write('\n' + experimentName)
     resultsFile.write('\nTop N Rank:' + str(results[0]))
     resultsFile.write('\nTop 1 Rank %:' + str(results[1][0]))
     resultsFile.write('\nTop 5 Rank %:' + str(results[1][1]))
@@ -165,6 +171,7 @@ def main():
     resultsFile.write('\nMAP:' + str(results[3]))
     resultsFile.write('\n-----------------------------')
     resultsFile.close()
+
 
 if __name__ == '__main__':
     main()

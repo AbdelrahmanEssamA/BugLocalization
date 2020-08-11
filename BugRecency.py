@@ -23,7 +23,7 @@ def convertToDateTime(date):
     return datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
 
 
-def runBugHistory(bugReports, srcFiles):
+def runBugHistory(bugReports, srcFiles, currentDataset):
     fixedFiles = []
     scores = []
     i = 1
@@ -38,7 +38,7 @@ def runBugHistory(bugReports, srcFiles):
 
         # for value in srcFiles.values():
         # print(value.srcFixedDate)
-    with open(aspectj.root + '/bugRecency.json', 'w') as file:
+    with open(currentDataset.root + '/bugRecency.json', 'w') as file:
         for bugRep in bugReports.values():
             total_recency = []
             for src in srcFiles.values():
@@ -51,16 +51,17 @@ def runBugHistory(bugReports, srcFiles):
             scores.append(total_recency)
         json.dump(scores, file)
 
-def main():
+def main(data_Set):
+    currentDataset = data_Set
     print("Bug history started")
 
-    with open(aspectj.root + '/preprocessed_reports.pickle', 'rb') as file:
+    with open(currentDataset.root + '/preprocessed_reports.pickle', 'rb') as file:
         bug_reports = pickle.load(file)
 
-    with open(aspectj.root + '/preprocessed_src.pickle', 'rb') as file:
+    with open(currentDataset.root + '/preprocessed_src.pickle', 'rb') as file:
         src_files = pickle.load(file)
 
-    runBugHistory(bug_reports, src_files)
+    runBugHistory(bug_reports, src_files, currentDataset)
     print('Bug history finished')
 
 
