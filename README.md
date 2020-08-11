@@ -1,5 +1,5 @@
 # BugLocalization
- Using 4 components  revised Vector space Model Glove word-embedding, Token matching and Bug History
+ Using 4 components  revised Vector space Model Glove word-embedding, Token matching and Bug Recency
  After prepocessing the source code files and bug reports
  depening on the simlarity outputs of The Componentes and the bug history
  The system rankes the suspicious source code files 
